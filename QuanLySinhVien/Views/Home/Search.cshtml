@@ -1,0 +1,81 @@
+﻿@model List<QuanLySinhVien.Models.DiemSV>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<div class="container">
+    <div class="row pt-4">
+        @*<div class="col-md-1"></div>*@
+        <div class="col-md-3">
+            <img src="~/Content/logo.png" class="w-25" />
+            <div class="list-group">
+                <a href="/Home/Index" class="list-group-item  list-group-item-action list-group-item-light">List</a>
+                <a href="/Home/Create" class="list-group-item  list-group-item-action list-group-item-light">New</a>
+                <a href="#" class="list-group-item  list-group-item-action list-group-item-light">Edit</a>
+                <a href="/Home/Search" class="list-group-item  list-group-item-action list-group-item-dark">Search</a>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <h3>Student score management</h3>
+            <h4>Lists</h4>
+            <form method="post" action="/Home/Search">
+                <div class="form-inline my-4">
+                    <label>Kết Quả</label>
+                    <select class="form-control form-control-sm mx-4" style="width:100px;" name="ketQua">
+                        @if (ViewBag.Condition)
+                        {
+                            <option value="true" selected>Đỗ</option>
+                            <option value="false">Trượt</option>
+                        }
+                        else
+                        {
+                            <option value="true">Đỗ</option>
+                            <option value="false" selected>Trượt</option>
+                        }
+                    </select>
+                    @*<input class="form-control form-control-sm d-inline w-25 mx-3" name="searchString" value="@ViewBag.searchString" />*@
+                    <button class="btn btn-sm btn-success">Search</button>
+                </div>
+
+            </form>
+            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                <table id="table" class="table table-bordered table-hover ">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Mã sinh viên</th>
+                            <th>Điểm kỳ 1</th>
+                            <th>Điểm kỳ 2</th>
+                            <th>Kết quả</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.MaSV</td>
+                                <td>@item.DiemKy1</td>
+                                <td>@item.DiemKy2</td>
+                                @if (item.KetQua)
+                                {
+                                    <td>Đỗ</td>
+                                }
+                                else
+                                {
+                                    <td>Trượt</td>
+                                }
+                                <td><a href="/Home/Edit/@item.Id" class="btn btn-outline-info">Edit</a></td>
+                                <td><a href="/Home/Delete/@item.Id" class="btn btn-outline-danger" onclick="return confirm('Are sure wants to delete?');">Delete</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
