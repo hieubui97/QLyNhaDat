@@ -1,4 +1,4 @@
-﻿@model List<QuanLySinhVien.Models.DiemSV>
+﻿@model List<QuanLyNhaDat.Models.Nha>
 
 @{
     ViewBag.Title = "List";
@@ -17,17 +17,16 @@
             </div>
         </div>
         <div class="col-md-9">
-            <h3>Student score management</h3>
+            <h3>Nhà đất management</h3>
             <h4>Lists</h4>
             <div class="table-wrapper-scroll-y my-custom-scrollbar">
                 <table id="table" class="table table-bordered table-hover ">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Mã sinh viên</th>
-                            <th>Điểm kỳ 1</th>
-                            <th>Điểm kỳ 2</th>
-                            <th>Kết quả</th>
+                            <th>Diện tích nhà</th>
+                            <th>Số phòng</th>
+                            <th>Khoảng cách đến trung tâm</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
@@ -37,17 +36,9 @@
                         {
                             <tr>
                                 <td>@item.Id</td>
-                                <td>@item.MaSV</td>
-                                <td>@item.DiemKy1</td>
-                                <td>@item.DiemKy2</td>
-                                @if (item.KetQua)
-                                {
-                                    <td>Đỗ</td>
-                                }
-                                else
-                                {
-                                    <td>Trượt</td>
-                                }
+                                <td>@item.DienTich</td>
+                                <td>@item.SoPhong</td>
+                                <td>@item.KhoangCach</td>
                                 <td><a href="/Home/Edit/@item.Id" class="btn btn-outline-info">Edit</a></td>
                                 <td><a href="/Home/Delete/@item.Id" class="btn btn-outline-danger" onclick="return confirm('Are sure wants to delete?');">Delete</a></td>
                             </tr>

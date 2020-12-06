@@ -1,4 +1,4 @@
-﻿@model QuanLySinhVien.Models.DiemSV
+﻿@model QuanLyNhaDat.Models.Nha
 
 @{
     ViewBag.Title = "Edit";
@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="col-md-9">
-            <h3>Student score management</h3>
+            <h3>Nhà đất management</h3>
             <h4>Edit</h4>
             <div class="container row">
                 <div class="col-md-5 py-3">
@@ -26,19 +26,19 @@
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         @Html.HiddenFor(model => model.Id)
                         <div class="form-group">
-                            <label>Mã sinh viên</label>
-                            <input class="form-control form-control-sm" name="MaSV" value="@Model.MaSV"/>
-                            @Html.ValidationMessageFor(model => model.MaSV, "", new { @class = "text-danger" })
+                            <label>Diện tích nhà</label>
+                            <input class="form-control form-control-sm" name="DienTich" value="@Model.DienTich"/>
+                            @Html.ValidationMessageFor(model => model.DienTich, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group">
-                            <label>Điểm kỳ 1</label>
-                            <input class="form-control form-control-sm" name="DiemKy1" value="@Model.DiemKy1" />
-                            @Html.ValidationMessageFor(model => model.DiemKy1, "", new { @class = "text-danger" })
+                            <label>Số phòng</label>
+                            <input class="form-control form-control-sm" name="SoPhong" value="@Model.SoPhong" />
+                            @Html.ValidationMessageFor(model => model.SoPhong, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group ">
-                            <label>Điểm kỳ 2</label>
-                            <input class="form-control form-control-sm" name="DiemKy2" value="@Model.DiemKy2" />
-                            @Html.ValidationMessageFor(model => model.DiemKy2, "", new { @class = "text-danger" })
+                            <label>Khoảng cách đến trung tâm</label>
+                            <input class="form-control form-control-sm" name="KhoangCach" value="@Model.KhoangCach" />
+                            @Html.ValidationMessageFor(model => model.KhoangCach, "", new { @class = "text-danger" })
                         </div>
                         @*<div class="form-group ">
             <label>Kết quả</label>
