@@ -13,6 +13,7 @@ namespace QuanLySinhVien.Controllers
         public ActionResult Index()
         {
             var dao = new DiemSV_DAO();
+            //dao.InsertData();
             var diemsv = dao.FindAll();
             return View(diemsv);
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using MongoDB;
@@ -56,8 +57,32 @@ namespace QuanLySinhVien.DAO
 
         public List<DiemSV> Search(bool ketQua)
         {
-            var diemsv = diemsvCollection.AsQueryable<DiemSV>().Where(x=>x.KetQua == ketQua).ToList();
+            var diemsv = diemsvCollection.AsQueryable<DiemSV>().Where(x => x.KetQua == ketQua).ToList();
             return diemsv;
+        }
+
+        public void InsertData()
+        {
+            int masv = 1;
+            string path = @"C:\Users\Hieu Bui\source\repos\QuanLySinhVien\QuanLySinhVien\Data\data.txt";
+            string[] lines = File.ReadAllLines(path);
+
+            for(int  i = 0; i < lines.Length; i++)
+            {
+                string line = lines[i];
+                string[] words = line.Split(',');
+
+                var diemSV = new DiemSV()
+                {
+                    MaSV = masv.ToString(),
+                    DiemKy1 = float.Parse(words[0]),
+                    DiemKy2 = float.Parse(words[1]),
+                    KetQua = Convert.ToBoolean(Convert.ToInt32(words[2]))
+                };
+
+                masv++;
+                diemsvCollection.InsertOne(diemSV);
+            }
         }
     }
 }
